@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Central Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <header class="bg-blue-900 text-white p-4 shadow">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Seller Central</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Orders</a></li>
+                    <li><a href="#" class="hover:underline">Inventory</a></li>
+                    <li><a href="#" class="hover:underline">Reports</a></li>
+                    <li><a href="#" class="hover:underline">Performance</a></li>
+                    <li><a href="#" class="hover:underline">Settings</a></li>
+                </ul>
+            </nav>
+            <div>
+                <span class="mr-4">Hello, Ritesh</span>
+                <a href="#" class="hover:underline">Sign Out</a>
+            </div>
+        </div>
+    </header>
+    <div class="container mx-auto mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2">
+                <div class="bg-white p-6 shadow rounded mb-6 card">
+                    <h2 class="text-3xl font-bold mb-4">Dashboard</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-blue-100 p-6 rounded text-center card">
+                            <h3 class="text-xl font-semibold">Orders</h3>
+                            <p class="text-3xl font-bold">120</p>
+                        </div>
+                        <div class="bg-green-100 p-6 rounded text-center card">
+                            <h3 class="text-xl font-semibold">Sales</h3>
+                            <p class="text-3xl font-bold">$5,240</p>
+                        </div>
+                        <div class="bg-yellow-100 p-6 rounded text-center card">
+                            <h3 class="text-xl font-semibold">Visitors</h3>
+                            <p class="text-3xl font-bold">1,200</p>
+                        </div>
+                        <div class="bg-red-100 p-6 rounded text-center card">
+                            <h3 class="text-xl font-semibold">Returns</h3>
+                            <p class="text-3xl font-bold">5</p>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold mb-2">Sales Graph</h3>
+                        <div class="bg-gray-100 p-6 rounded shadow">
+                            <!-- Placeholder for graph -->
+                            <canvas id="salesChart" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 shadow rounded mb-6 card">
+                    <h2 class="text-3xl font-bold mb-4">Recent Orders</h2>
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="py-3 px-4">Order ID</th>
+                                <th class="py-3 px-4">Customer</th>
+                                <th class="py-3 px-4">Date</th>
+                                <th class="py-3 px-4">Total</th>
+                                <th class="py-3 px-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-3 px-4">12345</td>
+                                <td class="py-3 px-4">John Doe</td>
+                                <td class="py-3 px-4">2023-07-13</td>
+                                <td class="py-3 px-4">$120.00</td>
+                                <td class="py-3 px-4 text-green-600">Completed</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">12346</td>
+                                <td class="py-3 px-4">Jane Smith</td>
+                                <td class="py-3 px-4">2023-07-13</td>
+                                <td class="py-3 px-4">$75.00</td>
+                                <td class="py-3 px-4 text-yellow-600">Pending</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">12347</td>
+                                <td class="py-3 px-4">David Brown</td>
+                                <td class="py-3 px-4">2023-07-12</td>
+                                <td class="py-3 px-4">$200.00</td>
+                                <td class="py-3 px-4 text-red-600">Cancelled</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="bg-white p-6 shadow rounded mb-6 card">
+                    <h2 class="text-3xl font-bold mb-4">Announcements</h2>
+                    <ul>
+                        <li class="mb-4">
+                            <p class="font-semibold">2023-07-12</p>
+                            <p>New feature: Bulk order processing now available.</p>
+                        </li>
+                        <li class="mb-4">
+                            <p class="font-semibold">2023-07-10</p>
+                            <p>Maintenance scheduled for 2023-07-15. Expect downtime from 2 AM to 4 AM.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 shadow rounded card">
+                    <h2 class="text-3xl font-bold mb-4">Quick Links</h2>
+                    <ul>
+                        <li class="mb-4"><a href="#" class="text-blue-500 hover:underline">Add New Product</a></li>
+                        <li class="mb-4"><a href="#" class="text-blue-500 hover:underline">Manage Inventory</a></li>
+                        <li class="mb-4"><a href="#" class="text-blue-500 hover:underline">View Sales Reports</a></li>
+                        <li class="mb-4"><a href="#" class="text-blue-500 hover:underline">Account Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [1200, 1900, 3000, 5000, 2300, 4200],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
