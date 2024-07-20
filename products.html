@@ -1,121 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seller Dashboard - Products</title>
     <!-- Tailwind CSS CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body class="bg-blue-50">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="bg-blue-50">
     <div class="flex">
-        <!-- Sidebar -->
-        <div class="w-1/6 text-black min-h-screen p-4 flex flex-col justify-between">
-            <div>
-                <nav class="flex flex-col items-center">
-                    <ul>
-                        <li class="mb-3 p-3">
-                            <a href="#" class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-home mr-6"></i> Home
-                            </a>
-                        </li>
-                        <li class="mb-3 p-3">
-                            <a href="#" class="flex items-center text-white bg-blue-500 rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-box mr-6"></i> Products
-                            </a>
-                        </li>
-                        <li class="mb-3 p-3">
-                            <a href="#" class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-shopping-cart mr-6"></i> Orders
-                            </a>
-                        </li>
-                        <li class="mb-3 p-3">
-                            <a href="#" class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-users mr-6"></i> Customers
-                            </a>
-                        </li>
-                        <li class="mb-3 p-3">
-                            <a href="#" class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-chart-line mr-6"></i> Reports
-                            </a>
-                        </li>
-                        <li class="p-3">
-                            <a href="#" class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300">
-                                <i class="fas fa-cog mr-6"></i> Settings
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+      <!-- Sidebar -->
+      <div
+        class="w-1/6 text-black sticky top-0 left-0 h-screen p-4 flex flex-col justify-between"
+      >
+        <div>
+          <nav class="flex flex-col items-center">
+            <ul>
+              <li class="mb-3 p-3">
+                <a
+                  href="home.html"
+                  class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-home mr-6"></i> Home
+                </a>
+              </li>
+              <li class="mb-3 p-3">
+                <a
+                  href="products.html"
+                  class="flex items-center text-white bg-blue-500 rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-box mr-6"></i> Products
+                </a>
+              </li>
+              <li class="mb-3 p-3">
+                <a
+                  href="#"
+                  class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-shopping-cart mr-6"></i> Orders
+                </a>
+              </li>
+              <li class="mb-3 p-3">
+                <a
+                  href="#"
+                  class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-users mr-6"></i> Customers
+                </a>
+              </li>
+              <li class="mb-3 p-3">
+                <a
+                  href="#"
+                  class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-chart-line mr-6"></i> Reports
+                </a>
+              </li>
+              <li class="p-3">
+                <a
+                  href="#"
+                  class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                >
+                  <i class="fas fa-cog mr-6"></i> Settings
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="w-5/6 p-6">
+        <div class="flex justify-between mb-6 items-center">
+          <h1 class="text-3xl mr-3 font-bold">Products</h1>
+          <div class="relative w-full">
+            <input
+              type="text"
+              placeholder="Search products..."
+              class="p-3 w-full rounded-full border border-gray-300 shadow-sm pl-10 focus:outline-none focus:ring-[1px] focus:ring-blue-500 focus:border-blue-500 hover:shadow-lg transition-all ease-in-out"
+            />
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <i class="fas fa-search text-gray-500"></i>
             </div>
+          </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="w-5/6 p-6">
-            <div class="flex justify-between mb-6 items-center">
-                <h1 class="text-3xl mr-3 font-bold">Products</h1>
-                <div class="relative w-full">
-                    <input type="text" placeholder="Search products..." class="p-3 w-full rounded-full border border-gray-300 shadow-sm pl-10 focus:outline-none focus:ring-[1px] focus:ring-blue-500 focus:border-blue-500 hover:shadow-lg transition-all ease-in-out">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3">
-                        <i class="fas fa-search text-gray-500"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Table -->
-             <div class="overflow-x-auto rounded-xl">
-                <table class="min-w-full bg-white rounded-lg shadow-md">
-                    <thead class="bg-blue-500 text-white">
-                        <tr>
-                            <th class="py-3 px-4 border-b">Image</th>
-                            <th class="py-3 px-4 border-b">Name</th>
-                            <th class="py-3 px-4 border-b">Main Category</th>
-                            <th class="py-3 px-4 border-b">Category</th>
-                            <th class="py-3 px-4 border-b">Sub-Category</th>
-                            <th class="py-3 px-4 border-b">Stock</th>
-                            <th class="py-3 px-4 border-b">Active Status</th> 
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <!-- Product Row -->
-                        <tr class="border-b">
-                            <td class="py-3 px-4 flex items-center justify-center">
-                                <img src="https://via.placeholder.com/60" alt="Product Image" class="w-16 h-16 rounded-lg">
-                            </td>
-                            <td class="py-3 px-4">Product Name</td>
-                            <td class="py-3 px-4">Main Category</td>
-                            <td class="py-3 px-4">Category</td>
-                            <td class="py-3 px-4">Sub-Category</td>
-                            <td class="py-3 px-4">
-                                <!-- Change color based on stock -->
-                                <span class="py-1 px-3 rounded-full bg-red-500 text-white'">
-                                    8
-                                </span>
-                            </td>
-                            <td class="py-3 px-4">
-                                <!-- Change color based on active status -->
-                                <span class="py-1 px-3 rounded-full bg-green-500 text-white">
-                                Active
-                                </span>
-                            </td>
-                        </tr>
-                        <!-- Repeat Product Row for other products -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Pagination -->
-            <div class="flex justify-center mt-6">
-                <nav class="inline-flex">
-                    <a href="#" class="py-2 px-4 text-gray-500 bg-white border border-gray-300 rounded-l-full hover:bg-blue-500 hover:text-white transition duration-300">Previous</a>
-                    <a href="#" class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300">1</a>
-                    <a href="#" class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300">2</a>
-                    <a href="#" class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300">3</a>
-                    <a href="#" class="py-2 px-4 text-gray-500 bg-white border border-gray-300 rounded-r-full hover:bg-blue-500 hover:text-white transition duration-300">Next</a>
-                </nav>
-            </div>
+        <!-- Product Table -->
+        <div class="overflow-x-auto rounded-xl">
+          <table class="min-w-full bg-white rounded-lg shadow-md">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th class="py-3 px-4 border-b">Image</th>
+                <th class="py-3 px-4 border-b">Name</th>
+                <th class="py-3 px-4 border-b">Main Category</th>
+                <th class="py-3 px-4 border-b">Category</th>
+                <th class="py-3 px-4 border-b">Sub-Category</th>
+                <th class="py-3 px-4 border-b">Stock</th>
+                <th class="py-3 px-4 border-b">Active Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <!-- Product Row -->
+              <tr class="border-b">
+                <td class="py-3 px-4 flex items-center justify-center">
+                  <img
+                    src="https://via.placeholder.com/60"
+                    alt="Product Image"
+                    class="w-16 h-16 rounded-lg"
+                  />
+                </td>
+                <td class="py-3 px-4">Product Name</td>
+                <td class="py-3 px-4">Main Category</td>
+                <td class="py-3 px-4">Category</td>
+                <td class="py-3 px-4">Sub-Category</td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on stock -->
+                  <span class="py-1 px-3 rounded-full bg-red-500 text-white'">
+                    8
+                  </span>
+                </td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on active status -->
+                  <span class="py-1 px-3 rounded-full bg-green-500 text-white">
+                    Active
+                  </span>
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3 px-4 flex items-center justify-center">
+                  <img
+                    src="https://via.placeholder.com/60"
+                    alt="Product Image"
+                    class="w-16 h-16 rounded-lg"
+                  />
+                </td>
+                <td class="py-3 px-4">Product Name</td>
+                <td class="py-3 px-4">Main Category</td>
+                <td class="py-3 px-4">Category</td>
+                <td class="py-3 px-4">Sub-Category</td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on stock -->
+                  <span class="py-1 px-3 rounded-full bg-red-500 text-white'">
+                    8
+                  </span>
+                </td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on active status -->
+                  <span class="py-1 px-3 rounded-full bg-green-500 text-white">
+                    Active
+                  </span>
+                </td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3 px-4 flex items-center justify-center">
+                  <img
+                    src="https://via.placeholder.com/60"
+                    alt="Product Image"
+                    class="w-16 h-16 rounded-lg"
+                  />
+                </td>
+                <td class="py-3 px-4">Product Name</td>
+                <td class="py-3 px-4">Main Category</td>
+                <td class="py-3 px-4">Category</td>
+                <td class="py-3 px-4">Sub-Category</td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on stock -->
+                  <span class="py-1 px-3 rounded-full bg-green-500 text-white'">
+                    20
+                  </span>
+                </td>
+                <td class="py-3 px-4">
+                  <!-- Change color based on active status -->
+                  <span class="py-1 px-3 rounded-full bg-red-500 text-white">
+                    Deactivate
+                  </span>
+                </td>
+              </tr>
+              <!-- Repeat Product Row for other products -->
+            </tbody>
+          </table>
         </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-6">
+          <nav class="inline-flex">
+            <a
+              href="#"
+              class="py-2 px-4 text-gray-500 bg-white border border-gray-300 rounded-l-full hover:bg-blue-500 hover:text-white transition duration-300"
+              >Previous</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300"
+              >1</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300"
+              >2</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 text-gray-700 bg-white border-t border-b border-gray-300 hover:bg-blue-500 hover:text-white transition duration-300"
+              >3</a
+            >
+            <a
+              href="#"
+              class="py-2 px-4 text-gray-500 bg-white border border-gray-300 rounded-r-full hover:bg-blue-500 hover:text-white transition duration-300"
+              >Next</a
+            >
+          </nav>
+        </div>
+      </div>
     </div>
-</body>
+    <a href="add_product.html"
+      ><div
+        class="px-5 py-3 text-white rounded-full absolute bottom-2 bg-blue-500 right-2"
+      >
+        +
+      </div></a
+    >
+  </body>
 </html>

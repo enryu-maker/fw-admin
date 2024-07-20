@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product - Seller Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-blue-50">
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Seller Dashboard</title>
+        <!-- Tailwind CSS CDN -->
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+          rel="stylesheet"
+        />
+        <!-- Font Awesome CDN -->
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        />
+        <!-- Chart.js CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          function addSizeChartRow() {
+            const sizeChartContainer = document.getElementById(
+              "size-chart-container"
+            );
+            const row = document.createElement("div");
+            row.className = "mb-4 border p-4 rounded-md bg-white";
+            row.innerHTML = `
+           <label
+                      for="size"
+                      class="block text-sm font-medium text-gray-700"
+                      >Size</label
+                    >
+                    <input
+                      type="text"
+                      name="size"
+                      id="size"
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                    <div class="flex flex-row gap-2">
+                      <div class="w-full">
+                        <label
+                          for="sku_code"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >SKU Code</label
+                        >
+                        <input
+                          type="text"
+                          name="sku_code"
+                          id="sku_code"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="status"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Status</label
+                        >
+                        <select
+                          name="status"
+                          id="status"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        >
+                          <option value="Activate">Activate</option>
+                          <option value="Inactivate">Inactivate</option>
+                        </select>
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="minimum_stock_quantity"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Minimum Stock Quantity</label
+                        >
+                        <input
+                          type="number"
+                          name="minimum_stock_quantity"
+                          id="minimum_stock_quantity"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="finish"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Finish</label
+                        >
+                        <select
+                          name="finish"
+                          id="finish"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        >
+                          <option value="1">Finish 1</option>
+                          <option value="2">Finish 2</option>
+                          <!-- Add more options as needed -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- Role Prices -->
+                    <div class="mb-4">
+                      <h3 class="text-lg font-semibold text-gray-800">
+                        Role Prices
+                      </h3>
+                      <div id="role-prices-container">
+                        <!-- Initial Role Price Row -->
+                        <div class="mb-4 border p-4 rounded-md bg-white">
+                          <div class="flex flex-row gap-2">
+                            <div class="w-full">
+                              <label
+                                for="role"
+                                class="block text-sm font-medium text-gray-700"
+                                >Role</label
+                              >
+                              <select
+                                name="role"
+                                id="role"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              >
+                                <option value="1">Role 1</option>
+                                <option value="2">Role 2</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="gst_percent"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >GST Percentage</label
+                              >
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="gst_percent"
+                                id="gst_percent"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="price_with_gst"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >Price with GST</label
+                              >
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="price_with_gst"
+                                id="price_with_gst"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="minimum_order_quantity"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >Minimum Order Quantity</label
+                              >
+                              <input
+                                type="number"
+                                name="minimum_order_quantity"
+                                id="minimum_order_quantity"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onclick="removeRolePriceRow(this)"
+                            class="text-red-500 hover:text-red-700"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onclick="addRolePriceRow()"
+                        class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                      >
+                        Add Role Price Row
+                      </button>
+                    </div>
+
+                    <!-- Location Section -->
+                    <div id="location-container" class="mt-4">
+                      <h4 class="text-md font-semibold text-gray-700">
+                        Location
+                      </h4>
+                      <div class="mb-4 border p-4 rounded-md">
+                        <label
+                          for="location"
+                          class="block text-sm font-medium text-gray-700"
+                          >Location</label
+                        >
+                        <input
+                          type="text"
+                          name="location"
+                          id="location"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+            <button type="button" onclick="removeSizeChartRow(this)" class="text-red-500 hover:text-red-700">Remove</button>
+        `;
+            sizeChartContainer.appendChild(row);
+          }
+
+          function removeSizeChartRow(button) {
+            button.parentElement.remove();
+          }
+          function addRolePriceRow() {
+            const rolePricesContainer = document.getElementById(
+              "role-prices-container"
+            );
+            const row = document.createElement("div");
+            row.className = "mb-4 border p-4 rounded-md bg-white";
+            row.innerHTML = `
+                <div class="flex flex-row gap-2">
+                    <div class="w-full">
+                        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                        <select name="role" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                            <option value="1">Role 1</option>
+                            <option value="2">Role 2</option>
+                        </select>
+                    </div>
+                    <div class="w-full">
+                        <label for="gst_percent" class="block text-sm font-medium text-gray-700 mt-2">GST Percentage</label>
+                        <input type="number" step="0.01" name="gst_percent" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    </div>
+                    <div class="w-full">
+                        <label for="price_with_gst" class="block text-sm font-medium text-gray-700 mt-2">Price with GST</label>
+                        <input type="number" step="0.01" name="price_with_gst" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    </div>
+                    <div class="w-full">
+                        <label for="minimum_order_quantity" class="block text-sm font-medium text-gray-700 mt-2">Minimum Order Quantity</label>
+                        <input type="number" name="minimum_order_quantity" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    </div>
+                </div>
+                <button type="button" onclick="removeRolePriceRow(this)" class="text-red-500 hover:text-red-700">Remove</button>
+            `;
+            rolePricesContainer.appendChild(row);
+          }
+
+          function removeRolePriceRow(button) {
+            button.parentElement.remove();
+          }
+        </script>
+      </head>
+      <body class="bg-blue-50">
+        <div class="flex">
+          <!-- Sidebar -->
+          <div
+            class="w-1/6 sticky top-0 left-0 text-black h-screen p-4 flex flex-col justify-between"
+          >
+            <div>
+              <nav class="flex flex-col items-center">
+                <ul>
+                  <li class="mb-3 p-3">
+                    <a
+                      href="home.html"
+                      class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-home mr-6"></i> Home
+                    </a>
+                  </li>
+                  <li class="mb-3 p-3">
+                    <a
+                      href="products.html"
+                      class="flex bg-blue-500 text-white items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-box mr-6"></i> Products
+                    </a>
+                  </li>
+                  <li class="mb-3 p-3">
+                    <a
+                      href="#"
+                      class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-shopping-cart mr-6"></i> Orders
+                    </a>
+                  </li>
+                  <li class="mb-3 p-3">
+                    <a
+                      href="#"
+                      class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-users mr-6"></i> Customers
+                    </a>
+                  </li>
+                  <li class="mb-3 p-3">
+                    <a
+                      href="#"
+                      class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-chart-line mr-6"></i> Reports
+                    </a>
+                  </li>
+                  <li class="p-3">
+                    <a
+                      href="#"
+                      class="flex items-center rounded-lg p-3 hover:bg-blue-400 hover:text-white transition duration-300"
+                    >
+                      <i class="fas fa-cog mr-6"></i> Settings
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="w-5/6 p-6">
+            <div class="flex justify-between mb-6 items-center">
+              <h1 class="text-3xl mr-3 font-bold">Add Product</h1>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" class="">
+              <div class="mb-4">
+                <label
+                  for="product_name"
+                  class="block text-sm font-medium text-gray-700"
+                  >Product Name</label
+                >
+                <input
+                  type="text"
+                  name="product_name"
+                  id="product_name"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+              <div class="mb-4">
+                <label
+                  for="description"
+                  class="block text-sm font-medium text-gray-700"
+                  >Description</label
+                >
+                <textarea
+                  name="description"
+                  id="description"
+                  rows="4"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                ></textarea>
+              </div>
+              <div class="mb-4">
+                <label
+                  for="main_category"
+                  class="block text-sm font-medium text-gray-700"
+                  >Main Category</label
+                >
+                <select
+                  name="main_category"
+                  id="main_category"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                >
+                  <option value="1">Main Category 1</option>
+                  <option value="2">Main Category 2</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="mb-4">
+                <label
+                  for="category"
+                  class="block text-sm font-medium text-gray-700"
+                  >Category</label
+                >
+                <select
+                  name="category"
+                  id="category"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                >
+                  <option value="1">Category 1</option>
+                  <option value="2">Category 2</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="mb-4">
+                <label
+                  for="sub_category"
+                  class="block text-sm font-medium text-gray-700"
+                  >Sub Category</label
+                >
+                <select
+                  name="sub_category"
+                  id="sub_category"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                >
+                  <option value="1">Sub Category 1</option>
+                  <option value="2">Sub Category 2</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+              <div class="mb-4">
+                <label
+                  for="image"
+                  class="block text-sm font-medium text-gray-700"
+                  >Product Image</label
+                >
+                <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                />
+              </div>
+
+              <!-- Size Chart Section -->
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Size Chart</h3>
+                <div id="size-chart-container">
+                  <div class="mb-4 border p-4 rounded-md bg-white">
+                    <label
+                      for="size"
+                      class="block text-sm font-medium text-gray-700"
+                      >Size</label
+                    >
+                    <input
+                      type="text"
+                      name="size"
+                      id="size"
+                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                    <div class="flex flex-row gap-2">
+                      <div class="w-full">
+                        <label
+                          for="sku_code"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >SKU Code</label
+                        >
+                        <input
+                          type="text"
+                          name="sku_code"
+                          id="sku_code"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="status"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Status</label
+                        >
+                        <select
+                          name="status"
+                          id="status"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        >
+                          <option value="Activate">Activate</option>
+                          <option value="Inactivate">Inactivate</option>
+                        </select>
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="minimum_stock_quantity"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Minimum Stock Quantity</label
+                        >
+                        <input
+                          type="number"
+                          name="minimum_stock_quantity"
+                          id="minimum_stock_quantity"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                      <div class="w-full">
+                        <label
+                          for="finish"
+                          class="block text-sm font-medium text-gray-700 mt-2"
+                          >Finish</label
+                        >
+                        <select
+                          name="finish"
+                          id="finish"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        >
+                          <option value="1">Finish 1</option>
+                          <option value="2">Finish 2</option>
+                          <!-- Add more options as needed -->
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- Role Prices -->
+                    <div class="mb-4">
+                      <h3 class="text-lg font-semibold text-gray-800">
+                        Role Prices
+                      </h3>
+                      <div id="role-prices-container">
+                        <!-- Initial Role Price Row -->
+                        <div class="mb-4 border p-4 rounded-md bg-white">
+                          <div class="flex flex-row gap-2">
+                            <div class="w-full">
+                              <label
+                                for="role"
+                                class="block text-sm font-medium text-gray-700"
+                                >Role</label
+                              >
+                              <select
+                                name="role"
+                                id="role"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              >
+                                <option value="1">Role 1</option>
+                                <option value="2">Role 2</option>
+                                <!-- Add more options as needed -->
+                              </select>
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="gst_percent"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >GST Percentage</label
+                              >
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="gst_percent"
+                                id="gst_percent"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="price_with_gst"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >Price with GST</label
+                              >
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="price_with_gst"
+                                id="price_with_gst"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                            <div class="w-full">
+                              <label
+                                for="minimum_order_quantity"
+                                class="block text-sm font-medium text-gray-700 mt-2"
+                                >Minimum Order Quantity</label
+                              >
+                              <input
+                                type="number"
+                                name="minimum_order_quantity"
+                                id="minimum_order_quantity"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                              />
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            onclick="removeRolePriceRow(this)"
+                            class="text-red-500 hover:text-red-700"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onclick="addRolePriceRow()"
+                        class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                      >
+                        Add Role Price Row
+                      </button>
+                    </div>
+                    <!-- Location Section -->
+                    <div id="location-container" class="mt-4">
+                      <h4 class="text-md font-semibold text-gray-700">
+                        Location
+                      </h4>
+                      <div class="mb-4 border p-4 rounded-md">
+                        <label
+                          for="location"
+                          class="block text-sm font-medium text-gray-700"
+                          >Location</label
+                        >
+                        <input
+                          type="text"
+                          name="location"
+                          id="location"
+                          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onclick="removeSizeChartRow(this)"
+                      class="text-red-500 hover:text-red-700"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onclick="addSizeChartRow()"
+                  class="text-blue-500 hover:text-blue-700"
+                >
+                  Add Size Chart Row
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <button
+                  type=""
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+                >
+                  Add Product
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </body>
+    </html>
+  </body>
+</html>
